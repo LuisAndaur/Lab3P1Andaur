@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:wght@100;300;400;500&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", "sans serif";
+        }
+
+        div#contenedorPadre{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2{
+            color: #0d2455;
+            margin: 10px 30px;
+        }
+
+        header{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3px;
+        }
+
+        header div{
+            width: 46%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+        }
+
+        input#promId{
+            width: 20%;
+            text-align: center;
+            font-weight: 700;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #eeeff3;
+            color: #039;
+        }
+
+        input.botones{
+            width: 25%;
+            background-color: #b9c9fe;
+            color: #039;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 5px 2px;
+        }
+
+        select {
+            background-color: #eeeff3;
+            color: #2b52a0;
+            padding: 4px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        select:hover {
+            background-color: #cdd5f2;
+        }
+
+        div#contenedor{
+            margin: 10px 30px;
+        }
+
+        div.order{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            padding: 6px;
+        }
+
+        div.order input{
+            margin-left: 12px;
+            margin-right: 2px;
+        }
+
+        section#contenedorTabla{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        table {
+            width: 60%;    
+            text-align: center;
+            border-collapse: collapse;
+            margin: 10px;   
+        }
+
+        td {
+            padding: 8px;
+            background: #e8edff;
+            border-bottom: 1px solid #fff;
+            color: #669;
+            border: 4px solid #fff; 
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        tr:hover td {
+            background: #d0dafd;
+            color: #339; 
+            border: 4px solid #fff;
+            font-size: 12px;
+        }
+
+        input.button {
+            width: 96%;
+            background-color: #b9c9fe;
+            color: #039;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 8px 8px;
+        }
+
+        input.button:hover {
+            background-color: #a1b1e6;
+        }
+
+        section#contenedorForm{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        form{
+            width:30%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            padding:16px;
+            margin: 10px;
+            border-radius:4px;
+            background-color:#dde0ea;
+        }
+
+        form label{
+            font-weight: 500;
+            padding: 5px;
+            font-size: 14px;
+        }
+
+        form input[type="text"],
+        form input[type="number"]{
+            width:100px;
+            padding:3px 10px;
+            border:1px solid #f6f6f6;
+            border-radius:3px;
+            background-color:#f6f6f6;
+            margin:8px 0;
+            display:inline-block;
+        }
+
+        form input[type="button"]{
+            width:24%;
+            margin-top:10px;
+            border-radius:4px;
+            border: none;
+            color:#fff;
+            background-color:#2b52a0;
+        } 
+
+        form input.botones[type="button"]{
+            display: inline-block;
+        } 
+
+        div.botonera{
+            width: 100%;
+        }
+
+    </style>
+    <title>Luis Andaur - PP LABO3 - Comisión 3C</title>
+</head>
+<body id="body">
+    <div id="contenedorPadre">
+        <h2>Form Datos</h2>
+        <header>
+            <div class="filtro">
+                <label>Filtrar por: </label>
+                <select id="select">
+                    <option value="todos" selected>Todos</option>
+                    <option value="alumnos">alumnos</option>
+                    <option value="docentes">docentes</option>
+                </select>
+            </div>
+            <div class="promedio">
+                <label>Promedio DNI: </label>
+                <input type="text" id="promDni" class="prom">
+                <input type="button" class="botones" id="calcular" value="Calcular">
+            </div>
+        </header>
+
+        <div class="order">
+            <input type="checkbox" id="cId"><label >ID</label>
+            <input type="checkbox" id="cDni"><label >DNI</label>
+            <input type="checkbox" id="cApellido"><label >Apellido</label>
+            <input type="checkbox" id="cNombre"><label >Nombre</label>
+            <input type="checkbox" id="cCursoNumero"><label >Curso N°</label>
+            <input type="checkbox" id="cCursoLetra"><label >Curso Letra</label>
+            <input type="checkbox" id="cMateria"><label >Materia</label>
+            <input type="checkbox" id="cAnio"><label >Año</label>
+        </div>
+
+        <section id="contenedorTabla">   
+            <table id="tabla">
+                <thead>
+                    <tr>
+                        <th id="thId"><input class="button" type="button" id="oId" value="Id"></th>
+                        <th id="thDni"><input class="button" type="button" id="oDni" value="DNI"></th>
+                        <th id="thApellido"><input class="button" type="button" id="oApellido" value="Apellido"></th>
+                        <th id="thNombre"><input class="button" type="button" id="oNombre" value="Nombre"></th>
+                        <th id="thCursoNumero"><input class="button" type="button" id="oCursoNumero" value="Curso N°"></th>
+                        <th id="thCursoLetra"><input class="button" type="button" id="oCursoLetra" value="Curso Letra"></th>
+                        <th id="thMateria"><input class="button" type="button" id="oMateria" value="Materia"></th>
+                        <th id="thAnio"><input class="button" type="button" id="oAnio" value="Año"></th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                    
+                </tbody>
+            </table>
+        </section>
+        <input id="agregar" type="button" class="botones" value="Agregar">
+
+        <section id="contenedorForm">
+            <form id="form">
+                <h2>Form AME</h2>
+                <label>ID: <input type="number" id="fId"></label>
+                <label>DNI: <input type="number" id="fDni"></label>
+                <label>Apellido: <input type="text" id="fApellido"></label>
+                <label>Nombre: <input type="text" id="fNombre"></label>
+                <label>Tipo: 
+                    <select id="fSelect">
+                        <option value="alumno" selected>Alumno</option>
+                        <option value="docente">Docente</option>
+                    </select>
+                </label>
+                <label id="label1">Curso N°: </label><input type="text" id="fInput1">
+                <label id="label2">Curso Letra: </label><input type="text" id="fInput2">           
+                <div class="botonera">
+                    <input type="button" class="botones" id="alta" value="Alta">
+                    <input type="button" class="botones" id="modificar" value="Modificar">
+                    <input type="button" class="botones" id="eliminar" value="Eliminar">
+                    <input type="button" class="botones" id="cancelar" value="Cancelar">
+                </div>                
+            </form>
+        </section>
+    </div>    
+    <script>
+        "use strict"
+        // -----------------------------------------
+        //                 CLASES
+        // -----------------------------------------
+        class Persona{
+            constructor(id, dni, nombre, apellido){
+                this._id = parseInt(id);
+                this._dni = parseInt(dni);
+                this._nombre = nombre;
+                this._apellido = apellido;
+            }
+
+            get Id(){
+                return this._id;
+            }
+
+            set Id(value){
+                this._id = value;
+            }
+
+            get Dni(){
+                return this._dni;
+            }
+
+            set Dni(value){
+                this._dni = value;
+            }
+
+            get Nombre(){
+                return this._nombre;
+            }
+
+            set Nombre(value){
+                this._nombre = value;
+            }
+
+            get Apellido(){
+                return this._apellido;
+            }   
+
+            set Apellido(value){
+                this._apellido = value;
+            }
+
+            toString(){
+                return `| ID: ${this.Id} | DNI: ${this.Dni} | Nombre: ${this.Nombre} | Apellido: ${this.Apellido}`;
+            }
+        }
+
+        class Alumno extends Persona{
+            constructor(id, dni, nombre, apellido, cursoNumero, cursoLetra){
+                super(id, dni, nombre, apellido);
+                this._cursoNumero = parseInt(cursoNumero);
+                this._cursoLetra = cursoLetra;
+            }
+
+            get CursoNumero(){
+                return this._cursoNumero;
+            }
+
+            set CursoNumero(value){
+                this._cursoNumero = value;
+            }
+
+            get CursoLetra(){
+                return this._cursoLetra;
+            }
+
+            set CursoLetra(value){
+                this._cursoLetra = value;
+            }
+
+            toString(){
+                return `${super.toString()} | Curso N°: ${this.CursoNumero} | Curso Letra: ${this.CursoLetra} \n`;
+            }
+        }
+
+        class Docente extends Persona{
+            constructor(id, dni, nombre, apellido, materia, año){
+                super(id, dni, nombre, apellido);
+                this._materia = materia;
+                this._año = parseInt(año);
+            }
+
+            get Materia(){
+                return this._materia;
+            }
+
+            set Materia(value){
+                this._materia = value;
+            }
+
+            get Anio(){
+                return this._año;
+            }
+
+            set Anio(value){
+                this._año = value;
+            }
+
+            toString(){
+                return `${super.toString()} | Materia: ${this.Materia} | Año: ${this.Anio} \n`;
+            }
+        }
+
+        // -----------------------------------------
+        // STRING A JSON
+        // -----------------------------------------
+        let string = '[{"id":1,"dni":17663295,"nombre":"FABIAN MARCELO","apellido":"ABADIE","cursoNumero":1,"cursoLetra":"F"},{"id":2,"dni":38724762,"nombre":"MAIRA DAIANA","apellido":"ABALOS","cursoNumero":3,"cursoLetra":"M"},{"id":3,"dni":25447357,"nombre":"NOELIA LIDIA","apellido":"ABBA","cursoNumero":2,"cursoLetra":"N"},{"id":4,"dni":27577699,"nombre":"MARÍA SOLEDAD","apellido":"ACHOR","cursoNumero":2,"cursoLetra":"M"},{"id":900,"dni":11496581,"nombre":"JOSE MIGUEL","apellido":"ARMALEO","materia":"Fisica","año":1},{"id":899,"dni":35326658,"nombre":"ROSA DEL VALLE","apellido":"LOPEZ","materia":"Lengua","año":3},{"id":898,"dni":39638351,"nombre":"DANIELA BELEN","apellido":"BROGGI D`ATENA","materia":"Matematica","año":3},{"id":897,"dni":17275566,"nombre":"PABLO ALBERTO","apellido":"ALMEIDA","materia":"Quimica","año":1}]';
+        let miArray = JSON.parse(string);
+        let arrayObj = miArray.map(function(x) {
+            if(x.hasOwnProperty("cursoNumero")){
+                return new Alumno(x.id,x.dni,x.nombre,x.apellido,x.cursoNumero,x.cursoLetra);      
+            }
+            if(x.hasOwnProperty("materia")){
+                return new Docente(x.id,x.dni,x.nombre,x.apellido,x.materia,x.año);        
+            }
+        });
+
+        // -----------------------------------------
+        // LIMPIAR TABLA
+        // -----------------------------------------
+        function limpiarTabla() {
+            let alumnos = arrayObj.filter(x => '_cursoNumero' in x);
+            let docentes = arrayObj.filter(x => '_materia' in x);
+            let cuerpoTabla = document.querySelector("#cuerpoTabla");
+            if(cuerpoTabla.childElementCount>=0){
+                if(cuerpoTabla.childElementCount == alumnos.length){
+                    alumnos.forEach(() => {
+                        let tr = cuerpoTabla.querySelector("tr");
+                        cuerpoTabla.removeChild(tr);        
+                    });
+                }
+                else{
+                    if(cuerpoTabla.childElementCount == docentes.length){
+                        docentes.forEach(() => {
+                            let tr = cuerpoTabla.querySelector("tr");
+                            cuerpoTabla.removeChild(tr);        
+                        });
+                    }
+                    else{
+                        arrayObj.forEach(() => {
+                            let tr = cuerpoTabla.querySelector("tr");
+                            cuerpoTabla.removeChild(tr);        
+                        });
+                    }
+                }
+            }
+        }
+
+        // -----------------------------------------
+        // GENERAR TABLA
+        // -----------------------------------------
+        function generarTabla() {
+            let selectTipo = document.getElementById('select');
+            let cuerpoTabla = document.querySelector("#cuerpoTabla");
+            if(!cuerpoTabla.childElementCount>=0){
+                arrayObj.forEach(item => {
+                    if(selectTipo.value == "alumnos" && item instanceof Alumno){
+                        cargarFilas(item);
+                    }
+                    else{
+                        if(selectTipo.value == "docentes" && item instanceof Docente){
+                            cargarFilas(item);
+                        }
+                        else{
+                            if(selectTipo.value=="todos"){
+                                cargarFilas(item);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function cargarFilas(item){
+            let cuerpoTabla = document.querySelector("#cuerpoTabla");
+            let datos = [item.Id,item.Dni,item.Apellido,item.Nombre,item.CursoNumero,item.CursoLetra,item.Materia,item.Anio];
+            let tr = document.createElement("tr");
+            tr.addEventListener('dblclick', cargarCampos); 
+
+            for(let i=0;i<datos.length;i++){
+                let td = document.createElement("td");
+                td.id = datos[i];
+                td.textContent = datos[i];
+                tr.appendChild(td);
+            }
+            cuerpoTabla.appendChild(tr);
+        }
+
+        // -----------------------------------------
+        // CONFIGURACION INICIAL
+        // -----------------------------------------
+        let body = document.getElementById('body');
+        body.addEventListener('load', configInit());
+
+        function configInit(){
+            document.getElementById('form').style.display = "none";
+            document.getElementById('cId').checked = true;
+            document.getElementById('cDni').checked = true;
+            document.getElementById('cApellido').checked = true;
+            document.getElementById('cNombre').checked = true;
+            document.getElementById('cCursoNumero').checked = true;
+            document.getElementById('cCursoLetra').checked = true;
+            document.getElementById('cMateria').checked = true;
+            document.getElementById('cAnio').checked = true;
+            document.getElementById("fId").readOnly = true;
+            generarTabla();
+        }
+
+        // -----------------------------------------
+        // CHEACK
+        // OCULTAR COLUMNAS
+        // -----------------------------------------
+        let cId = document.getElementById('cId');
+        let cDni = document.getElementById('cDni');
+        let cApellido = document.getElementById('cApellido');
+        let cNombre = document.getElementById('cNombre');
+        let cCursoNumero = document.getElementById('cCursoNumero');
+        let cCursoLetra = document.getElementById('cCursoLetra');
+        let cMateria = document.getElementById('cMateria');
+        let cAnio = document.getElementById('cAnio');
+        let arrayCheck = [cId,cDni,cApellido,cNombre,cCursoNumero,cCursoLetra,cMateria,cAnio];
+
+        for(let i=0;i<arrayCheck.length;i++){
+            arrayCheck[i].textContent = i;
+            arrayCheck[i].addEventListener('click', ocultar);
+        }
+
+        function ocultar(e){
+            let btn = e.currentTarget;
+            let indice = btn.textContent;
+            let tbody = document.querySelector("#cuerpoTabla");
+            let arrayTh = ['thId','thDni','thApellido','thNombre','thCursoNumero','thCursoLetra','thMateria','thAnio'];
+            let arrayCheck = ['cId','cDni','cApellido','cNombre','cCursoNumero','cCursoLetra','cMateria','cAnio'];
+            let tr = tbody.childNodes;
+
+            for(let i=0; i<tbody.childNodes.length-1; i++){
+                let td = tr.item(i+1).childNodes.item(indice);
+                
+                if(!document.getElementById(arrayCheck[indice]).checked){
+                    td.style.display = "none";
+                    document.getElementById(arrayTh[indice]).style.display = "none";
+                    document.getElementById(arrayCheck[indice]).checked = false;
+                }
+                else{
+                    td.style.display = "";
+                    document.getElementById(arrayTh[indice]).style.display = "";
+                    document.getElementById(arrayCheck[indice]).checked = true;
+                }
+            }
+        }
+
+        // -----------------------------------------
+        // BOTONES
+        // ORDENAMIENTO
+        // -----------------------------------------
+        let orderId = document.getElementById('oId');
+        let orderDni = document.getElementById('oDni');
+        let orderApellido = document.getElementById('oApellido');
+        let orderNombre = document.getElementById('oNombre');
+        let orderCursoNumero = document.getElementById('oCursoNumero');
+        let orderCursoLetra = document.getElementById('oCursoLetra');
+        let orderMateria = document.getElementById('oMateria');
+        let orderAnio = document.getElementById('oAnio');
+        let arrayOrder = [orderId,orderDni,orderApellido,orderNombre,orderCursoNumero,orderCursoLetra,orderMateria,orderAnio];
+
+        for(let i=0;i<arrayOrder.length;i++){
+            arrayOrder[i].textContent = i;
+            arrayOrder[i].addEventListener('click', function(){
+                arrayObj.sort( (a, b) => {
+                    let paramA = [a.Id,a.Dni,a.Apellido,a.Nombre,a.CursoNumero,a.CursoLetra,a.Materia,a.Anio];
+                    let paramB = [b.Id,b.Dni,b.Apellido,b.Nombre,b.CursoNumero,b.CursoLetra,b.Materia,b.Anio];
+                    if(paramA[i]){
+                        if (paramA[i] > paramB[i]) {
+                            return 1;
+                        } 
+                        else if (paramA[i] == paramB[i]) { 
+                            return 0;
+                        } 
+                        else {
+                            return -1;
+                        }
+                    }
+                });
+                limpiarTabla();
+                generarTabla();
+            });
+        }
+
+        // -----------------------------------------
+        // FILTRADOS
+        // -----------------------------------------
+        function filtradoTabla(obj) {
+            let cuerpoTabla = document.getElementById("cuerpoTabla");
+            if(!cuerpoTabla.childElementCount>0){
+                if(obj == "alumnos"){
+                    let alumnos = arrayObj.filter(x => '_cursoNumero' in x);
+                    alumnos.forEach(item => {
+                        cargarFilas(item);
+                    });
+                    return alumnos;
+                }
+                else{
+                    let docentes = arrayObj.filter(x => '_materia' in x);
+                    docentes.forEach(item => {
+                        cargarFilas(item);
+                    });
+                    return docentes;
+                }
+            }
+        }
+
+        // -----------------------------------------
+        // SELECT
+        // -----------------------------------------
+        let seleccion = document.getElementById('select');
+        seleccion.addEventListener('change', select);
+        function select() {
+            let x = document.getElementById("select").value;
+            switch (x) {
+                case "alumnos":
+                    limpiarTabla();
+                    filtradoTabla("alumnos");
+                    break;
+            
+                case "docentes":
+                    limpiarTabla();
+                    filtradoTabla("docentes");
+                    break;
+            
+                default:
+                    limpiarTabla();
+                    generarTabla();
+                    break;
+            }
+        }
+
+        // -----------------------------------------
+        // PROMEDIO IDs
+        // -----------------------------------------
+        let calculadora = document.getElementById('calcular');
+        calculadora.addEventListener('click', calcular);
+
+        function calcular() {
+            let x = document.getElementById("select").value;
+            let acumulador = 0;
+            let promedio = 0;
+            let alumnos = [];
+            let docentes = [];
+            switch (x) {
+                case "alumnos":
+                    alumnos = arrayObj.filter(x => '_cursoNumero' in x);
+                    alumnos.forEach(item => {
+                        acumulador += parseInt(item.Dni);
+                    });
+                    promedio = parseFloat(acumulador)/alumnos.length;
+                    document.getElementById("promDni").value = promedio;
+                    break;
+            
+                case "docentes":
+                    docentes = arrayObj.filter(x => '_materia' in x);
+                    docentes.forEach(item => {
+                        acumulador += parseInt(item.Dni);
+                    });
+                    promedio = parseFloat(acumulador)/docentes.length;
+                    document.getElementById("promDni").value = promedio;
+                    break;
+            
+                default:
+                    arrayObj.forEach(item => {
+                        acumulador += parseInt(item.Dni);
+                    });
+                    promedio = parseFloat(acumulador)/arrayObj.length;
+                    document.getElementById("promDni").value = promedio;
+                    break;
+            }
+        }
+
+        // -----------------------------------------
+        // TABLA
+        // INSERTAR 
+        // -----------------------------------------
+        let alta = document.getElementById('alta');
+        alta.addEventListener('click', agregarObj);
+
+        function insertarNuevo() {
+            let indice = arrayObj.length-1;
+            let newObj = arrayObj[indice];
+            cargarFilas(newObj);
+        }
+
+        // -----------------------------------------
+        // FORMULARIO
+        // ALTA
+        // -----------------------------------------
+        let altas = document.getElementById('alta');
+        altas.addEventListener('click', agregarObj);
+
+        function agregarObj(){
+            let id = arrayObj.reduce( (acc,item) => {
+                return Math.max(acc, parseInt(item.Id));
+            },0);
+            id++;
+            let dni = parseInt(document.getElementById("fDni").value);
+            let apellido = document.getElementById("fApellido").value;
+            let nombre = document.getElementById("fNombre").value;
+
+            if(document.getElementById("fId").value==""){
+                if(id>0 && dni>0 && nombre!="" && apellido!=""){
+                    let newAlta;
+                    if(document.getElementById("fSelect").value == "alumno"){
+                        let cursoNumero = parseInt(document.getElementById("fInput1").value);
+                        let cursoLetra = document.getElementById("fInput2").value;
+                        if(cursoNumero>0 && cursoLetra!=""){  
+                            newAlta = new Alumno(id,dni,nombre,apellido,cursoNumero,cursoLetra);
+                            arrayObj.push(newAlta);
+                        }
+                    }
+                    else{
+                        let materia = document.getElementById("fInput1").value;
+                        let anio = parseInt(document.getElementById("fInput2").value);
+                        if(materia!='' && anio>0){
+                            newAlta = new Docente(id,dni,nombre,apellido,materia,anio);
+                            arrayObj.push(newAlta);
+                        }
+                    }
+                    insertarNuevo();
+                    console.log(newAlta.toString());
+                }
+                else{
+                    alert("Completar el formulario con datos correctos");
+                }
+                document.getElementById('form').style.display = "none";
+                limpiarCampos();
+            }
+            else{
+                alert("Registro ya existe");
+            }
+        }
+
+        // -----------------------------------------
+        // FORMULARIO
+        // ELIMINAR
+        // -----------------------------------------
+        let eliminar = document.getElementById('eliminar');
+        eliminar.addEventListener('click', deleteRow);
+
+        function deleteRow(){
+            let tbody = document.getElementById('cuerpoTabla');
+            let tr = tbody.childNodes;
+            let id = parseInt(document.getElementById("fId").value);
+            for(let i=0; i<arrayObj.length;i++){
+                if(id == arrayObj[i].Id){
+                    limpiarTabla();
+                    arrayObj.splice(i,1);
+                    generarTabla();
+                    break;
+                }
+            }
+            document.getElementById('form').style.display = "none";
+            limpiarCampos();
+            limpiarTabla();
+            generarTabla();
+        }
+
+        // -----------------------------------------
+        // FORMULARIO
+        // CARGAR CAMPOS
+        // -----------------------------------------
+        function cargarCampos(){
+            var tr = event.target.parentNode;
+            document.getElementById('form').style.display = "";
+            document.getElementById("fId").value = tr.cells[0].innerHTML;
+            document.getElementById("fDni").value = tr.cells[1].innerHTML;
+            document.getElementById("fApellido").value = tr.cells[2].innerHTML;
+            document.getElementById("fNombre").value = tr.cells[3].innerHTML;
+
+            if(tr.cells[3].innerHTML!="" && tr.cells[4].innerHTML!=""){
+                document.getElementById("fSelect").value = 'alumno';
+                document.getElementById("fInput1").value = tr.cells[4].innerHTML;
+                document.getElementById("fInput2").value = tr.cells[5].innerText;
+                document.getElementById("label1").innerHTML = 'Curso N°: ';
+                document.getElementById("label2").innerHTML = 'Curso Letra: ';
+            }
+            else{
+                document.getElementById("fSelect").value = 'docente';
+                document.getElementById("fInput1").value = tr.cells[6].innerHTML;
+                document.getElementById("fInput2").value = tr.cells[7].innerText;
+                document.getElementById("label1").innerHTML = 'Materia: ';
+                document.getElementById("label2").innerHTML = 'Año: ';
+            }
+        }
+
+        // -----------------------------------------
+        // SELECT FORMULARIO
+        // -----------------------------------------
+        let selector = document.getElementById('fSelect');
+        selector.addEventListener('change', selectForm);
+        function selectForm() {
+            if(document.getElementById("fSelect").value == 'alumno'){
+                document.getElementById("label1").innerHTML = 'Curso N°: ';
+                document.getElementById("label2").innerHTML = 'Curso Letra: ';
+            }
+            else{
+                document.getElementById("label1").innerHTML = 'Materia: ';
+                document.getElementById("label2").innerHTML = 'AÑo: ';
+            }
+        }
+
+        // -----------------------------------------
+        // FORMULARIO
+        // MODIFICAR 
+        // -----------------------------------------
+        let modificar = document.getElementById('modificar');
+        modificar.addEventListener('click', modificarCampo);
+
+        function modificarCampo(){
+            let id = parseInt(document.getElementById("fId").value);
+            let dni = parseInt(document.getElementById("fDni").value);
+            let apellido = document.getElementById("fApellido").value;
+            let nombre = document.getElementById("fNombre").value;
+
+            for(let i=0;i<arrayObj.length;i++){
+                if(id==arrayObj[i].Id){
+                    if(id>0 && dni>0 && nombre!="" && apellido!=""){
+                        if(document.getElementById("fSelect").value == "alumno"){
+                            let cursoNumero = parseInt(document.getElementById("fInput1").value);
+                            let cursoLetra = document.getElementById("fInput2").value;
+                            if(cursoNumero>0 && cursoLetra!=""){
+                                arrayObj.splice(i,1,new Alumno(id,dni,nombre,apellido,cursoNumero,cursoLetra));
+                                break;
+                            }
+                        }
+                        else{
+                            let materia = document.getElementById("fInput1").value;
+                            let anio = parseInt(document.getElementById("fInput2").value);
+                            if(materia!='' && anio>0){
+                                arrayObj.splice(i,1,new Docente(id,dni,nombre,apellido,materia,anio));
+                                break;
+                            }
+                        }
+                    }
+                    else{
+                        alert("Completar el formulario con datos correctos");
+                    }
+                }
+            }
+            document.getElementById('form').style.display = "none";
+            limpiarCampos();
+            limpiarTabla();
+            generarTabla();
+        }
+
+        // -----------------------------------------
+        // FORMULARIO
+        // LIMPIAR CAMPOS!
+        // -----------------------------------------
+        function limpiarCampos(){
+            document.getElementById("fId").value = "";
+            document.getElementById("fDni").value = "";
+            document.getElementById("fApellido").value = "";
+            document.getElementById("fNombre").value = "";
+            document.getElementById("fInput1").value = "";
+            document.getElementById("fInput2").value = "";
+        }
+
+        // -----------------------------------------
+        // VISIBILIDAD FORM!
+        // -----------------------------------------
+        let agregar = document.getElementById('agregar');
+        agregar.addEventListener('click', visibilidad);
+
+        function visibilidad(){
+            if(document.getElementById('form').style.display == ""){
+                document.getElementById('form').style.display = "none";
+            }
+            else{
+                document.getElementById('form').style.display = "";
+            }
+            limpiarCampos();
+        }
+
+        // -----------------------------------------
+        // FORMULARIO CANCELAR FORM!
+        // -----------------------------------------
+        let cancel = document.getElementById('cancelar');
+        cancel.addEventListener('click', cancelar);
+
+        function cancelar(){
+            document.getElementById('form').style.display = "none";
+            limpiarCampos();
+        }
+
+    </script>
+</body>
+</html>
